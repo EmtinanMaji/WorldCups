@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Hotel>
+
+@{
+    ViewData["Title"] = "Hotel Page";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            @foreach (var items in Model)
+            {
+                <div class="card mt-3">
+                    <div class="card-bady">
+                        <div class="row">
+                            <div class="col">
+                                <img src="/@items.Images" class="rounded" height="200" width="200"/>
+                               
+                            </div>
+                            <div class="col">
+                                <h5>@items.Name</h5>
+                                <h3>@items.Location</h3>
+                                <h1>@items.City</h1>
+                                <ul class="list list-inline">
+                                    @foreach(var i in items.Facilities)
+                                    {
+                                        <li class="list-inline-item"><small class="text-muted">@i</small></li>
+                                    }
+                                </ul>
+                                <h3>@items.Price</h3>
+                            </div>
+                            <div class="col text-center">
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            
+            }
+        </div>
+    </div>
+</div>

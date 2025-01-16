@@ -1,0 +1,34 @@
+﻿@model IEnumerable<Transport>
+
+@{
+    ViewData["Title"] = "Transport Page";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            @foreach (var items in Model)
+            {
+                <div class="card mt-3">
+                    <div class="card-bady">
+                        <div class="row">
+                            <div class="col">
+                                <img src="/@items.Images" class="rounded" height="200"  />
+
+                            </div>
+                            <div class="col">
+                                <h5>@items.Name</h5>
+                                <h3>@items.Model</h3>
+                                <h3>@items.ModelVersion</h3>
+                                <h3>@items.Color</h3>
+                            </div>
+                            <div class="col text-center">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            }
+        </div>
+    </div>
+</div>

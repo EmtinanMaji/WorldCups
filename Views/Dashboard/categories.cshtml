@@ -1,0 +1,123 @@
+﻿@model IEnumerable<Categories>
+@{
+	Layout = "~/Views/Shared/_LayoutsAdmin.cshtml";
+}
+<div class="modal" tabindex="-1" id="del">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">  تأكيد الحدف</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<p>هل بالفعل تريد حذف هذا السجل</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إلغاء الامر</button>
+				<button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="confirm_delete1()"> حذف</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="row mt-5">
+		<div class="col">
+			<div class="card-body mt-5">
+				<form asp-action="CreateNewCategories" method="post">
+					<div class="row">
+						<div class="col">
+							<label class="form-label">اسم الفئة</label>
+							<input type="text" name="Name" class="form-control"/>
+							<span class="text-danger" asp-validation-for="@Model.First().Name"></span>
+							
+						</div>
+						<div class="col">
+							<label class="form-label">وصف الفئة</label>
+							<input type="text" name="Description" class="form-control" />
+							<span class="text-danger" asp-validation-for="@Model.First().Description"></span>
+
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col">
+							<label class="form-label">ايقونة الفئة</label>
+							<input type="text" name="Icon" class="form-control" />
+							<span class="text-danger" asp-validation-for="@Model.First().Icon"></span>
+
+						</div>
+						<div class="col">
+							<label class="form-label">رابط الفئة</label>
+							<input type="text" name="Url" class="form-control" />
+							<span class="text-danger" asp-validation-for="@Model.First().Url"></span>
+
+						</div>
+					</div>
+
+					<div class="row mt-3">
+
+						<div class="col">
+							<button class="btn btn-primary">حفظ</button>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col">
+							<h1 class="alert alert-secondary"> @TempData["Save"]</h1>
+						</div>
+					</div>
+
+				</form>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="row mt-5">
+		<div class="col">
+			<div class="card mt-5">
+				<div class="card-bady">
+					<form asp-action="Categories">
+						<label class="from-label">بحث </label>
+						<input type="text" name="name" class="form-control" asp-action="index" />
+						<div class="row">
+							<div class="col text-center">
+								<button type="submit" class="btn btn-primary">بحث</button>
+							</div>
+							<div class="col text-center">
+								<a asp-action="Categories">اظهار الجميع</a>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row mt-5">
+		<div class="col">
+			<div class="card mt-5">
+				<div class="card-bady">
+					<form asp-action="Categories">
+						<label class="from-label">بحث </label>
+						<input type="text" name="name" class="form-control" oninput="search(this.value)" />
+						
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+	
+
+
+	@* Partial Data cull *@
+	<div id="categriescontainer">
+	@Html.Partial("_partial/_CategoriesPartialData",Model) 
+	</div> 
+
+
+
+</div>

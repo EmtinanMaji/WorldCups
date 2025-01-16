@@ -1,0 +1,30 @@
+﻿@model IEnumerable<TableFootball>
+
+@{
+    ViewData["Title"] = "TableFootball Page";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            @foreach (var items in Model)
+            {
+                <div class="card mt-3">
+                    <div class="card-bady">
+                        <div class="row">
+                            <div class="col text-center">
+                                <h3>@items.MatchTime</h3>
+                                <div class="row">
+                                <h5>@items.Ateam1</h5>
+                                <h5>@items.Ateam2</h5>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            }
+        </div>
+    </div>
+</div>

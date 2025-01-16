@@ -1,0 +1,123 @@
+﻿@model IEnumerable<Transport>
+@{
+	Layout = "~/Views/Shared/_LayoutsAdmin.cshtml";
+	var getdata = ViewBag.getdata; 
+	var getdatatransport = ViewBag.getdatatransport;
+	
+} 
+<div class="container">
+	<div class="row mt-5">
+		<div class="col">
+			<div class="card mt-5">
+				<div class="card-bady">
+					<form asp-action="CreateNewTransport" method="post" enctype="multipart/form-data">
+						<div class="row">
+							<div class="col">
+								<label class="form-label">اسم السيارة</label>
+								<input type="text" name="Name" class="form-control" />
+
+							</div>
+							<div class="col"> 
+ 								<label class="form-label">الفئة</label>
+								<select class="form-select" name="CategoriesTransportationId">
+									<option>اختر نوع الفئة</option>  
+									 @foreach(var item in getdata)  
+									 {  
+									 <option value="@item.Id">@item.Name</option>  
+									 } 
+								</select> 
+							</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								<label class="form-label">اللون</label>
+								<input type="text" name="Color" class="form-control" />
+							
+							</div>
+							<div class="col">
+								<label class="form-label">السعة</label>
+								<input type="text" name="Capacity" class="form-control" />
+
+							</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								<label class="form-label">صورة السيارة</label>
+								<input type="file" name="photo" class="form-control" />
+
+							</div>
+							<div class="col">
+								<label class="form-label">الممشى</label>
+								<input type="text" name="Km" class="form-control" />
+
+							</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								<label class="form-label"> موديل السيارة</label>
+								<input type="text" name="Model" class="form-control" />
+
+							</div>
+							<div class="col">
+								<label class="form-label"> اصدار السيارة</label>
+								<input type="text" name="ModelVersion" class="form-control" />
+
+							</div>
+						</div>
+
+
+						<div class="row mt-3">
+
+							<div class="col">
+								<button class="btn btn-primary">حفظ</button>
+							</div>
+						</div>
+					</form>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row mt-5">
+		<div class="col">
+			<div class="card mt-5">
+				<div class="card-bady">
+					<table class="table text-center">
+						<thead>
+							<tr class=" text-center">
+								<td>رقم السيارة</td>
+								<td>اسم السيارة</td>
+								<td>فئة السيارة</td>
+								<td>لون السيارة</td>
+								<td>سعة السيارة</td>
+								<td>صورة السيارة</td>
+								<td>ممشى السيارة</td>
+								<td>موديل السيارة</td>
+								<td>اصدار السيارة</td>
+							</tr>
+						</thead>
+
+						<tbady>
+							@foreach (var item in getdatatransport)
+							{
+								<tr>
+									<td>@item.Id</td>
+									<td>@item.NameCar</td>
+									<td>@item.NameCategores</td>
+									<td>@item.Color</td>
+									<td>@item.Capacity</td>
+									<td> <img src="/images/@item.Images" width="60" height="60" class="rounded rounded-circle" /></td>
+									<td>@item.Km</td>
+									<td>@item.Model</td>
+									<td>@item.ModelVersion</td>
+								</tr>
+							}
+						</tbady>
+
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
