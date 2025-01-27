@@ -1,0 +1,20 @@
+﻿@model WorldCups.Models.Booking
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Invoice</h2>
+    <div class="p-4 border rounded shadow bg-light">
+        <p>Thank you for your booking!</p>
+        <p><strong>Name:</strong> @Model.CustomerName</p>
+        <p><strong>Email:</strong> @Model.Email</p>
+        <p><strong>Hotel:</strong> @Model.Hotel.Name</p>
+        <p><strong>City:</strong> @Model.Hotel.City</p>
+        <p><strong>Check-In:</strong> @Model.CheckInDate.ToShortDateString()</p>
+        <p><strong>Check-Out:</strong> @Model.CheckOutDate.ToShortDateString()</p>
+        <p><strong>Total Amount:</strong> $@Model.TotalAmount</p>
+        <p><strong>Payment Status:</strong> 
+            <span class="badge @(Model.Payment.IsSuccessful ? "bg-success" : "bg-danger")">
+                @(Model.Payment.IsSuccessful ? "Successful" : "Failed")
+            </span>
+        </p>
+    </div>
+</div>

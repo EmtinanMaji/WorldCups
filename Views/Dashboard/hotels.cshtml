@@ -2,6 +2,24 @@
 @{
 	Layout = "~/Views/Shared/_LayoutsAdmin.cshtml";
 }
+<div class="modal" tabindex="-1" id="del">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">  تأكيد الحدف</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<p>هل بالفعل تريد حذف هذا السجل</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إلغاء الامر</button>
+				<button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="confirm_delete_hotel()"> حذف</button>
+			</div>
+		</div>
+	</div>
+</div>
+
 <div class="container">
 	<div class="row mt-5">
 		<div class="col">
@@ -70,40 +88,19 @@
 		<div class="col">
 			<div class="card mt-5">
 				<div class="card-bady">
-					<table class="table text-center">
-						<thead>
-							<tr class=" text-center">
-								<td>رقم الفندق</td>
-								<td>اسم الفندق</td>
-								<td>وصف الفندق</td>
-								<td>المدينة</td>
-								<td>موقع الفندق</td>
-								<td>صورة الفندق</td>
-								<td>سعر الفندق</td>
-								<td>تفاصيل اخرى</td>
-							</tr>
-						</thead>
+					<form asp-action="Categories">
+						<label class="from-label">بحث </label>
+						<input type="text" name="name" class="form-control" oninput="search_hotel(this.value)" />
 
-						<tbady>
-							@foreach (var item in Model)
-							{
-								<tr>
-									<td>@item.Id</td>
-									<td>@item.Name</td>
-									<td>@item.Description</td>
-									<td>@item.City</td>
-									<td>@item.Location</td>
-									<td> <img src="/images/@item.Images" width="60" height="60" class="rounded rounded-circle" /></td>
-									<td>@item.Price</td>
-									<td>@item.Facilities</td>
-								</tr>
-							}
-						</tbady>
-
-					</table>
+					</form>
 				</div>
 			</div>
 		</div>
+	</div>
+
+	@* Partial Data cull *@
+	<div id="hotelcontainer">
+		@Html.Partial("_partial/_HotelPartialData", Model);
 	</div>
 
 </div>

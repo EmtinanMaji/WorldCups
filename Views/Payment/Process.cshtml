@@ -1,0 +1,25 @@
+﻿@model WorldCups.Models.Payment
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Payment</h2>
+    <form asp-action="Process" method="post" class="p-4 border rounded shadow bg-light">
+        <input type="hidden" asp-for="BookingId" />
+
+        <div class="mb-3">
+            <label for="CardNumber" class="form-label">Card Number</label>
+            <input id="CardNumber" asp-for="CardNumber" type="text" class="form-control" required />
+        </div>
+
+        <div class="mb-3">
+            <label for="ExpiryDate" class="form-label">Expiry Date</label>
+            <input id="ExpiryDate" asp-for="ExpiryDate" type="date" class="form-control" required />
+        </div>
+
+        <div class="mb-3">
+            <label for="CVV" class="form-label">CVV</label>
+            <input id="CVV" asp-for="CVV" type="text" class="form-control" required />
+        </div>
+
+        <button type="submit" class="btn btn-success w-100">Pay</button>
+    </form>
+</div>

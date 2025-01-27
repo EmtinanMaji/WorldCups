@@ -7,11 +7,11 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+//(‰Ê⁄ «·« ’«· + ”ÿ— «·« ’«·)
 builder.Services.AddDbContext<ApplicationDbContext>(option=>
 {
     option.UseSqlServer(builder.Configuration.GetConnectionString("DefualtConnection"));
 });
-
 builder.Services.AddDbContext<DashboardContext>(option =>
 {
     option.UseSqlServer(builder.Configuration.GetConnectionString("DefualtConnection"));
@@ -39,7 +39,7 @@ app.MapStaticAssets();
 app.MapRazorPages();
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Dashboard}/{action=Index}/{id?}")
+    pattern: "{controller=Home}/{action=Index}/{id?}")
     .WithStaticAssets();
 
 

@@ -1,0 +1,57 @@
+﻿@{
+}
+<div class="row mt-5">
+	<div class="col">
+		<div class="card mt-5">
+			<div class="card-bady">
+				<table class="table text-center">
+					<thead>
+						<tr class=" text-center">
+							<td>رقم الملعب</td>
+							<td>اسم الملعب</td>
+							<td>سعة الملعب</td>
+							<td>نوع الملعب</td>
+							<td>مسؤول الملعب</td>
+							<td>مساحة الملعب</td>
+							<td>موقع الملعب</td>
+							<td>وقت افتتاح الملعب</td>
+							<td>صورة الملعب</td>
+							<td>مرافق اضافية</td>
+							<td class="text-center" colspan="2">إجراء</td>
+						</tr>
+					</thead>
+
+					<tbady>
+						@foreach (var item in Model)
+						{
+							<tr>
+								
+								<td>@item.Id</td>
+								<td>@item.Name</td>
+								<td>@item.Capacity</td>
+								<td>@item.Type</td>
+								<td>@item.Owner</td>
+								<td>@item.Space</td>
+								<td>@item.City</td>
+								<td>@item.ConstractionDate</td>
+								<td> <img src="/images/@item.Images" width="60" height="60" class="rounded rounded-circle" /></td>
+								<td>@item.Facilities</td>
+								<td>
+									<a onclick="showmessage(@item.Id)"> <i class="fa fa-trash text-danger" aria-hidden="true"></i></a>
+
+								</td>
+								<td>
+
+									<a asp-action="EditStadiums" asp-route-id="@item.Id">  <i class="fa fa-pencil text-success" aria-hidden="true"></i></a>
+
+
+								</td>
+							</tr>
+						}
+					</tbady>
+
+				</table>
+			</div>
+		</div>
+	</div>
+</div>

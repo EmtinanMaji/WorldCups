@@ -1,0 +1,67 @@
+﻿
+@model Hotel
+@{
+    Layout = "~/Views/Shared/_LayoutsAdmin.cshtml";
+}
+
+
+<div class="container">
+    <div class="row mt-5">
+        <div class="col">
+            <div class="card mt-5">
+                <div class="card-body">
+                    <form asp-action="UpdateHotels" method="post" enctype="multipart/form-data">
+                        <div class="row">
+                            <input type="hidden" asp-for="@Model.Id" />
+                            <div class="col">
+                                <label class="form-label">اسم الفئة</label>
+                                <input type="text" asp-for="@Model.Name" class="form-control" />
+                            </div>
+                            <div class="col">
+                                <label class="form-label">وصف الفئة</label>
+                                <input type="text" asp-for="@Model.Description" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label class="form-label">المدينة</label>
+                                <input type="text" asp-for="@Model.City"  class="form-control" />
+
+                            </div>
+                            <div class="col">
+                                <label class="form-label">موقع الفندق</label>
+                                <input type="text" asp-for="@Model.Location"  class="form-control" />
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label class="form-label">صورة الفندق</label>
+                                <input type="file" name="photo"  class="form-control" />
+
+                            </div>
+                            <div class="col">
+                                <label class="form-label">السعر</label>
+                                <input type="text" asp-for="@Model.Price"  class="form-control" />
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label class="form-label">تفاصيل اخرى</label>
+                                <input type="text" asp-for="@Model.Facilities"  class="form-control" />
+
+                            </div>
+                        </div>
+
+                        <div class="row mt-3">
+                            <div class="col text-center">
+                                <button type="submit" class="btn btn-primary">حفظ</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

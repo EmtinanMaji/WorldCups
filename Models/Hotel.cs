@@ -13,6 +13,8 @@ namespace WorldCups.Models
         public string City { get; set; }
         public decimal Price { get; set; }
         public List<string> Facilities { get; set; } = new List<string>();
+        public List<Booking> Bookings { get; set; } = new List<Booking>();
+
 
     }
 }

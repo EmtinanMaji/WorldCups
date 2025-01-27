@@ -1,0 +1,141 @@
+﻿@model IEnumerable<TableFootball>
+@{
+	Layout = "~/Views/Shared/_LayoutsAdmin.cshtml";
+	var getdata = ViewBag.getdata;
+	var getdatatableFootballs = ViewBag.getdatatableFootballs;
+	
+
+}
+<div class="modal" tabindex="-1" id="del">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">  تأكيد الحدف</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<p>هل بالفعل تريد حذف هذا السجل</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إلغاء الامر</button>
+				<button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="confirm_delete_tableFootball()"> حذف</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="row mt-5">
+		<div class="col">
+			<div class="card mt-5">
+				<div class="card-bady">
+					<form asp-action="CreateNewTableFootball" method="post" enctype="multipart/form-data">
+						<div class="row">
+							<div class="col">
+								<label class="form-label">موعد المباراة</label>
+								<input type="date" name="MatchTime" class="form-control" />
+
+							</div>
+							<div class="col">
+								<label class="form-label"> الملعب</label>
+								<select class="form-select" name="Stadiums_id">
+									<option>اختر الملعب</option>
+									@foreach (var item in getdata)
+									{
+										<option value="@item.Id">@item.Name</option>
+									}
+								</select>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								<label class="form-label">الفريق 1</label>
+								<input type="text" name="Ateam1" class="form-control" />
+
+							</div>
+							<div class="col">
+								<label class="form-label">الفريق 2</label>
+								<input type="text" name="Ateam2" class="form-control" />
+
+							</div>
+						</div>
+						
+						
+						
+
+
+						<div class="row mt-3">
+
+							<div class="col">
+								<button class="btn btn-primary">حفظ</button>
+							</div>
+						</div>
+					</form>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row mt-5">
+		<div class="col">
+			<div class="card mt-5">
+				<div class="card-bady">
+					<form asp-action="Stadiums">
+						<label class="from-label">بحث </label>
+						<input type="text" name="name" class="form-control" oninput="search_tableFootball(this.value)" />
+
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="tableFootballcontainer">
+		<div class="row mt-5">
+			<div class="col">
+				<div class="card mt-5">
+					<div class="card-bady">
+						<table class="table text-center">
+							<thead>
+								<tr class=" text-center">
+									<td>رقم المباراه</td>
+									<td>موعد المباراة</td>
+									<td>الملعب</td>
+									<td>االفريق 1</td>
+									<td>الفريق 2</td>
+									<td class="text-center" colspan="2">إجراء</td>
+								</tr>
+							</thead>
+
+							<tbady>
+								@foreach (var item in getdatatableFootballs)
+								{
+									<tr>
+										<td>@item.Id</td>
+										<td>@item.MatchTime</td>
+										<td>@item.Stadiums_Name</td>
+										<td>@item.Ateam1</td>
+										<td>@item.Ateam2</td>
+										<td>
+											<a onclick="showmessage(@item.Id)"> <i class="fa fa-trash text-danger" aria-hidden="true"></i></a>
+
+										</td>
+										<td>
+
+											<a asp-action="EditTableFootball" asp-route-id="@item.Id">  <i class="fa fa-pencil text-success" aria-hidden="true"></i></a>
+
+
+										</td>
+									</tr>
+								}
+							</tbady>
+
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	
+</div>

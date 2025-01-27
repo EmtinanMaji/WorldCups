@@ -1,5 +1,115 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model IEnumerable<Stadiums>
 @{
+	Layout = "~/Views/Shared/_LayoutsAdmin.cshtml";
 }
+<div class="modal" tabindex="-1" id="del">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">  تأكيد الحدف</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<p>هل بالفعل تريد حذف هذا السجل</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إلغاء الامر</button>
+				<button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="confirm_delete_stadiums()"> حذف</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="row mt-5">
+		<div class="col">
+			<div class="card mt-5">
+				<div class="card-bady">
+					<form asp-action="CreateNewStadiums" method="post" enctype="multipart/form-data">
+						<div class="row">
+							<div class="col">
+								<label class="form-label">اسم الملعب</label>
+								<input type="text" name="Name" class="form-control" />
+
+							</div>
+							<div class="col">
+								<label class="form-label">سعة الملعب</label>
+								<input type="text" name="Capacity" class="form-control" />
+
+							</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								<label class="form-label">نوع الملعب</label>
+								<input type="text" name="Type" class="form-control" />
+
+							</div>
+							<div class="col">
+								<label class="form-label">مسؤول الملعب</label>
+								<input type="text" name="Owner" class="form-control" />
+
+							</div>
+							<div class="col">
+								<label class="form-label">مساحة الملعب</label>
+								<input type="text" name="Space" class="form-control" />
+
+							</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								<label class="form-label">موقع الملعب</label>
+								<input type="text" name="City" class="form-control" />
+
+							</div>
+							<div class="col">
+								<label class="form-label">وقت افتتاح الملعب</label>
+								<input type="date" name="ConstractionDate" class="form-control" />
+
+							</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								<label class="form-label">صورة الملعب</label>
+								<input type="file" name="photo" class="form-control" />
+
+							</div>
+							<div class="col">
+								<label class="form-label">مرافق اضافية</label>
+								<input type="text" name="Facilities" class="form-control" />
+
+							</div>
+						</div>
+
+
+						<div class="row mt-3">
+
+							<div class="col">
+								<button class="btn btn-primary">حفظ</button>
+							</div>
+						</div>
+						
+					</form>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row mt-5">
+		<div class="col">
+			<div class="card mt-5">
+				<div class="card-bady">
+					<form asp-action="Stadiums">
+						<label class="from-label">بحث </label>
+						<input type="text" name="name" class="form-control" oninput="search_stadiums(this.value)" />
+
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="stadiumscontainer">
+		@Html.Partial("_partial/_StadiumsPartialData", Model)
+	</div>
+
+</div>

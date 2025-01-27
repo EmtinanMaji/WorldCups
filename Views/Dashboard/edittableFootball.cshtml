@@ -1,0 +1,59 @@
+﻿@model TableFootball
+@{
+    Layout = "~/Views/Shared/_LayoutsAdmin.cshtml";
+	var getdata = ViewBag.getdata;
+}
+<div class="container">
+	<div class="row mt-5">
+		<div class="col">
+			<div class="card mt-5">
+				<div class="card-bady">
+					<form asp-action="CreateNewTableFootball" method="post" enctype="multipart/form-data">
+						<div class="row">
+							<input type="hidden" asp-for="@Model.Id" />
+							<div class="col">
+								<label class="form-label">موعد المباراة</label>
+								<input type="date" asp-for="@Model.MatchTime" class="form-control" />
+
+							</div>
+							<div class="col">
+								<label class="form-label"> الملعب</label>
+								<select class="form-select" asp-for="@Model.Stadiums_id">
+									<option>اختر الملعب</option>
+									@foreach (var item in getdata)
+									{
+										<option value="@item.Id">@item.Name</option>
+									}
+								</select>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								<label class="form-label">الفريق 1</label>
+								<input type="text" asp-for="@Model.Ateam1" class="form-control" />
+
+							</div>
+							<div class="col">
+								<label class="form-label">الفريق 2</label>
+								<input type="text" asp-for="@Model.Ateam2" class="form-control" />
+
+							</div>
+						</div>
+
+
+
+
+
+						<div class="row mt-3">
+
+							<div class="col">
+								<button class="btn btn-primary">حفظ</button>
+							</div>
+						</div>
+					</form>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

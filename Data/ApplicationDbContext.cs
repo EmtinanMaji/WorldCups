@@ -13,6 +13,9 @@ namespace WorldCups.Data
         public DbSet<Hotel> hotels { get; set; }
         public DbSet<Transport> transport { get; set; }
 
+        public DbSet<Booking> Bookings { get; set; }
+        public DbSet<Payment> Payments { get; set; }
+
 
     }
 }
